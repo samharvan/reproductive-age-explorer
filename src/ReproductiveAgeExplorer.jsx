@@ -961,6 +961,47 @@ const ReproductiveAgeExplorer = () => {
               ]}
             />
 
+            {/* Custom Scenario Controls - only show when custom is selected */}
+            {scenario === 'custom' && (
+              <>
+                {/* Peak Fertility Age Slider */}
+                <SliderControl
+                  label="Peak Fertility Age"
+                  value={peakFertilityAge}
+                  onChange={setPeakFertilityAge}
+                  min={15}
+                  max={50}
+                  step={1}
+                  equation="μ (mode of fertility)"
+                  description="Age with highest fertility rate"
+                  color="#ec4899"
+                  marks={[
+                    { value: 15, label: '15' },
+                    { value: 27, label: '27' },
+                    { value: 50, label: '50' }
+                  ]}
+                />
+
+                {/* Fertility Spread Slider */}
+                <SliderControl
+                  label="Fertility Spread"
+                  value={fertilitySpread}
+                  onChange={setFertilitySpread}
+                  min={2}
+                  max={15}
+                  step={0.5}
+                  equation="σ (standard deviation)"
+                  description="Width of fertility curve"
+                  color="#06b6d4"
+                  marks={[
+                    { value: 2, label: '2' },
+                    { value: 7, label: '7' },
+                    { value: 15, label: '15' }
+                  ]}
+                />
+              </>
+            )}
+
             {/* Population Slider */}
             <SliderControl
               label="Initial Population"
